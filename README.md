@@ -15,7 +15,7 @@ Line Bot นี้ถูกพัฒนาขึ้นเพื่อให้�
 
 1. **Clone repository**
     ```bash
-    git clone https://github.com/username/repo-name.git
+    git clone https://github.com/Thapthai/Line-Chat-Bot-IT-Request.git
     cd repo-name
     ```
 

@@ -1,0 +1,8 @@
+DB_HOST=localhost
+DB_NAME=ชื่อฐานข้อมูล
+DB_USER=ชื่อผู้ใช้
+DB_PASS=รหัสผ่าน
+
+
+CHANNEL_ACCESS_TOKEN=your_channel_access_token
+CHANNEL_SECRET=your_channel_secret

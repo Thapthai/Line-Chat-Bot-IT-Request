@@ -22,14 +22,20 @@
    git clone https://github.com/Thapthai/Line-Chat-Bot-IT-Request.git
    cd Line-Chat-Bot-IT-Request
    ```
+2. **เปิดใช้งาน PHP Sockets Extension**:
+   - เปิดไฟล์ php.ini ด้วยโปรแกรมแก้ไขข้อความ (เช่น Notepad หรือ VS Code).
+   - ค้นหาบรรทัดที่มีคำว่า ;extension=sockets และลบ ; ที่อยู่หน้าบรรทัดนั้น เพื่อเปิดใช้งาน
+   ```bash
+   extension=sockets
+   ```
 
-2. **ติดตั้ง dependencies**:
+4. **ติดตั้ง dependencies**:
    ```bash
    composer install
    npm install
    ```
 
-3. **ตั้งค่าไฟล์ .env**:
+5. **ตั้งค่าไฟล์ .env**:
    - คัดลอกไฟล์ `.env.example` เป็น `.env`
    - ตั้งค่ารายละเอียดดังนี้:
      ```plaintext
@@ -46,17 +52,17 @@
      DB_PASSWORD=your_database_password
      ```
 
-4. **Generate Application Key**:
+6. **Generate Application Key**:
    ```bash
    php artisan key:generate
    ```
 
-5. **ตั้งค่าและ migrate ฐานข้อมูล**:
+7. **ตั้งค่าและ migrate ฐานข้อมูล**:
    ```bash
    php artisan migrate
    ```
 
-6. **รันเซิร์ฟเวอร์**:
+8. **รันเซิร์ฟเวอร์**:
    ```bash
    php artisan serve
    ```

@@ -1,66 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# ระบบแจ้งปัญหาผ่าน LINE Message API
 
-## About Laravel
+ระบบนี้พัฒนาขึ้นเพื่อช่วยให้ผู้ใช้สามารถแจ้งปัญหาโดยใช้ LINE โดยรองรับทั้งข้อความและรูปภาพ 
+พร้อมทั้งจัดการสถานะของการแจ้งปัญหาอย่างเป็นระบบในฐานข้อมูล SQL Server และมีการใช้ Laravel Framework
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## คุณสมบัติหลัก (Features)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- รองรับการแจ้งปัญหาผ่าน Line Message API
+- บันทึกข้อมูลปัญหาและรายละเอียดลงในฐานข้อมูล SQL Server
+- การตอบกลับอัตโนมัติผ่าน LINE Message API
+- ใช้โครงสร้าง MVC ใน Laravel เพื่อให้การจัดการโค้ดง่ายขึ้น
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## การติดตั้ง (Installation)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Clone โปรเจกต์**: 
+   ```bash
+   git clone https://github.com/Thapthai/Line-Chat-Bot-IT-Request.git
+   cd Line-Chat-Bot-IT-Request
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **ติดตั้ง dependencies**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Laravel Sponsors
+3. **ตั้งค่าไฟล์ .env**:
+   - คัดลอกไฟล์ `.env.example` เป็น `.env`
+   - ตั้งค่ารายละเอียดดังนี้:
+     ```plaintext
+     
+     LINE_BOT_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
+     LINE_BOT_CHANNEL_SECRET=your_line_channel_secret
+     LINE_BOT_CHANNEL_ID=your_line_channel_id
+     
+     DB_CONNECTION=sqlsrv
+     DB_HOST=localhost
+     DB_PORT=1433
+     DB_DATABASE=your_database_name
+     DB_USERNAME=your_database_user
+     DB_PASSWORD=your_database_password
+     ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. **Generate Application Key**:
+   ```bash
+   php artisan key:generate
+   ```
 
-### Premium Partners
+5. **ตั้งค่าและ migrate ฐานข้อมูล**:
+   ```bash
+   php artisan migrate
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+6. **รันเซิร์ฟเวอร์**:
+   ```bash
+   php artisan serve
+   ```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## การใช้งาน (Usage)
 
-## Code of Conduct
+1. ผู้ใช้พิมพ์ **"แจ้งปัญหา"** เพื่อเริ่มต้นการแจ้งปัญหา
+2. ระบบจะบันทึกปัญหาลงในฐานข้อมูลพร้อมแสดงข้อความตอบกลับ
+3. ผู้ใช้พิมพ์ **"สิ้นสุด"** เพื่อยุติการแจ้งปัญหา
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## โครงสร้างโฟลเดอร์ (Project Structure)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```plaintext
+/project-root
+|-- /app
+|   |-- /Http
+|       |-- Controllers
+|           |-- LineController.php       # ควบคุมการรับ-ส่งข้อมูลจาก LINE
+|   |-- /Models
+|       |-- Ticket.php                   # จัดการการบันทึกข้อมูลแจ้งปัญหา
+|
+|-- /routes
+|   |-- api.php                          # กำหนดเส้นทาง API
+|
+|-- /config
+|   |-- database.php                     # ตั้งค่าฐานข้อมูล
+|
+|-- .env                                 # ข้อมูลการตั้งค่าตัวแปรลับ
+|-- composer.json                        # รายการ dependencies ของ PHP
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## การทดสอบ (Testing)
+
+- ทดสอบการรับ-ส่งข้อความผ่าน LINE Developer Console โดยเชื่อมต่อ webhook URL ของโปรเจกต์
+- ทดสอบการบันทึกข้อมูลลงในฐานข้อมูล SQL Server ว่ามีการสร้างข้อมูลการแจ้งปัญหาได้ถูกต้องหรือไม่
+
+---
+
+## ข้อมูลเพิ่มเติม
+
+โปรเจกต์นี้พัฒนาโดยใช้ Laravel Framework และการเชื่อมต่อกับ LINE API เพื่ออำนวยความสะดวกในการแจ้งปัญหา
+
